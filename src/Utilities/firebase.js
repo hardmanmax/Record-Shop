@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
-import { getFirestore, doc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -31,11 +31,41 @@ export const auth = getAuth();
 
 export const createUserDocumentFromAuth = async (
   userAuth, 
+  additionalInfo = {}
 ) => {
   if (!userAuth) return;
-
   const userDocRef = doc(db, 'users', userAuth.uid);
-  console.log(userDocRef);
+  //console.log(userDocRef);
+
+  const userSnapshot = await getDoc(userDocRef);
+  //console.log(userSnapshot.exists());
+
+  //Tells us whether there is a piece of data with uid 
+  //  equal to userAuth.uid which exists in database.
+  
+  //If user data does not exist:
+  if(!userSnapshot.exists()) {
+    //Create a new entry in my database collection 
+    //  with the following data:
+    const {displayName, email} = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await setDoc(userDocRef, {
+        displayName,
+        email, 
+        createdAt,
+        ...additionalInfo
+      });
+
+      //If there's an error, say so.
+    } catch (error) {
+      alert('Error creating user', error.message);
+    }
+  }
+
+  //But if user data exists, do nothing.
+  return userDocRef;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
