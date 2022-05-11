@@ -1,9 +1,9 @@
-import React from 'react'
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import {Outlet, Link }  from 'react-router-dom'
 
 import { ReactComponent as DragonLogo } from "../Assets/Logo.svg";
 
+import SignInModal from '../Components/Modals/SignInModal';
 
 const Navigation = () => {
   return (
@@ -26,11 +26,13 @@ const Navigation = () => {
             </Nav>
             <Nav> 
               <NavDropdown title="Sign in" id="collasible-nav-dropdown">
-                <NavDropdown.Item>Sign In</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <SignInModal />
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>Sign Up</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link>Basket</Nav.Link>
+              <Nav.Link>Basket (0)</Nav.Link>
             </Nav>
             
           </Navbar.Collapse>
