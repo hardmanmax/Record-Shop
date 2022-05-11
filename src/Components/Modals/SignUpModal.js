@@ -41,7 +41,11 @@ const SignUpModal = () => {
       const { user } = await createAuthUserWithEmailAndPassword(email, password);
       await createUserDocumentFromAuth(user, {email});
     } catch (error) {
-      console.log('Error', error);
+      if(error.code === 'auth/email-already-in-use') {
+        alert('Email already in use');
+      } else {
+        console.log('Error: ', error);
+      }
     }
   }
 

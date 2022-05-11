@@ -4,7 +4,9 @@ import Form from "react-bootstrap/Form";
 import Nav from 'react-bootstrap/Nav';
 
 import { useState, useContext } from "react";
+
 import { UserContext } from "../../Context/user.context";
+import { signInAuthUserWithEmailAndPassword } from "../../Utilities/firebase";
 
 const defaultFormFields = {
   email: '',
@@ -20,7 +22,11 @@ const SignInModal = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const { passwordShown, setPasswordShown } = useContext(UserContext);
+  const { 
+    passwordShown, 
+    setPasswordShown,
+    currentUser
+  } = useContext(UserContext);
 
   const togglePasswordShown = () => {
     setPasswordShown(!passwordShown);
@@ -31,15 +37,42 @@ const SignInModal = () => {
     setFormFields({...formFields, [name]: value});
   }
   
-  const handleSubmit = (e) => {
-    setFormFields(defaultFormFields);
+  const handleSubmit =  async (e) => {
     setPasswordShown(false);
     e.preventDefault();
+    
+    if (!email || !password ) {
+      alert('Please enter and password to sign in.')
+    }
+    try {
+      await signInAuthUserWithEmailAndPassword(email, password);
+      handleClose();
+      setFormFields(defaultFormFields);
+      
+
+    } catch (error) {
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert('Incorrect Password');
+          setFormFields(defaultFormFields);
+        break;
+        case "auth/user-not-found":
+          alert('No account exists for those details. Sign up');
+          setFormFields(defaultFormFields);
+          handleClose();
+        break;
+        default:
+      }
+    }
   }
   return (
     <>
       <Nav onClick={handleShow}>
-        <span>Sign in</span>
+      {
+        currentUser ? 
+        <p>{`${currentUser.email}`}</p>
+        : <span>Sign in</span>
+      }
       </Nav>
 
       <Modal show={show} onHide={handleClose}>
@@ -49,7 +82,7 @@ const SignInModal = () => {
           </Modal.Header>
 
           <Modal.Body>
-            <Form >
+            <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control 
