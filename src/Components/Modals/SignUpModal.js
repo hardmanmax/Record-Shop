@@ -5,6 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 
 import { useState } from "react";
 
+import { createUserDocumentFromAuth, createAuthUserWithEmailAndPassword } from '../../Utilities/firebase';
+
 const defaultFormFields = {
   email: '',
   password: '',
@@ -34,6 +36,12 @@ const SignUpModal = () => {
     }
     if ( password.length < 8) {
       alert("Passwords must be a minimum of 8 characters")
+    }
+    try {
+      const { user } = await createAuthUserWithEmailAndPassword(email, password);
+      await createUserDocumentFromAuth(user, {email});
+    } catch (error) {
+      console.log('Error', error);
     }
   }
 
