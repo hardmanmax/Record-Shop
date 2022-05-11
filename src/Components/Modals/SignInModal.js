@@ -31,9 +31,10 @@ const SignInModal = () => {
     setFormFields({...formFields, [name]: value});
   }
   
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     setFormFields(defaultFormFields);
     setPasswordShown(false);
+    e.preventDefault();
   }
   return (
     <>

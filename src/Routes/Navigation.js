@@ -4,6 +4,7 @@ import {Outlet, Link }  from 'react-router-dom'
 import { ReactComponent as DragonLogo } from "../Assets/Logo.svg";
 
 import SignInModal from '../Components/Modals/SignInModal';
+import SignUpModal from '../Components/Modals/SignUpModal';
 
 const Navigation = () => {
   return (
@@ -30,7 +31,9 @@ const Navigation = () => {
                   <SignInModal />
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>Sign Up</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <SignUpModal />
+                </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link>Basket (0)</Nav.Link>
             </Nav>
