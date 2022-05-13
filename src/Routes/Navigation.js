@@ -51,6 +51,8 @@ const Navigation = () => {
                         <SignInModal />
                       </NavDropdown.Item>
 
+                      <NavDropdown.Divider />
+
                       <NavDropdown.Item>
                         <SignUpModal />
                       </NavDropdown.Item>
@@ -69,7 +71,7 @@ const Navigation = () => {
         </Container>
       </Navbar>
       <Outlet/>
-      </>
+    </>
   )
 }
 

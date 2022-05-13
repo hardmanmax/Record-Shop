@@ -1,11 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import Directory from '../Components/Directory'
 
 const Homepage = () => {
   return (
     <>
-    <Outlet/>
-    <div>Homepage</div>
+      <Directory />
+      <Outlet/>
     </>
   )
 }
