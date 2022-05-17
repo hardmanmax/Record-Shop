@@ -5,6 +5,7 @@ import Homepage from './Routes/Homepage';
 import Navigation from './Routes/Navigation';
 import Shop from './Routes/Shop';
 import Footer from './Routes/Footer';
+import Checkout from './Routes/Checkout';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/' element = {<Navigation/>} >
           <Route index element={<Homepage/>}/>
           <Route path='/shop/*' element={<Shop/>}/>
+          <Route path='/checkout'element={<Checkout />}/>
         </Route>
       </Routes>
       <Footer />

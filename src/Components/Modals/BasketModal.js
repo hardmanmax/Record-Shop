@@ -1,3 +1,4 @@
+import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Nav from "react-bootstrap/Nav"
 import Row from "react-bootstrap/Row";
@@ -5,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import { useContext, useState } from "react";
 import { BasketContext } from "../../Context/basket.context";
 import BasketItem from "../BasketItem/BasketItem";
+import { useNavigate } from "react-router-dom";
 
 const BasketModal = () => {
 
@@ -15,6 +17,19 @@ const BasketModal = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   
+  const navigate = useNavigate();
+
+  const goToCheckoutHandler = () => {
+    handleClose();
+    navigate('/checkout');
+  };
+
+  const goToShopHandler = () => {
+    handleClose();
+    navigate('/shop');
+  }
+
+
   return (
     <>
       <Nav.Link variant="primary" onClick={handleShow}>
@@ -25,6 +40,7 @@ const BasketModal = () => {
           <Modal.Title>Basket</Modal.Title>
         </Modal.Header>
 
+        { basketCount ? (
         <>
           <Modal.Body>
             <Row>
@@ -40,8 +56,35 @@ const BasketModal = () => {
                 basketItem={item}/>
             ))}
 
+            <Row>
+              <Col></Col>
+              <Col></Col>
+              <Col></Col>
+              <Col>
+                <h4>Total: £</h4>
+              </Col>
+            </Row>
           </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="dark" onClick={goToCheckoutHandler}>
+              Checkout
+            </Button>
+          </Modal.Footer>
         </>
+        ) : (
+        <>
+          <Modal.Body>
+            <p>Your basket is empty.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="dark" onClick={goToShopHandler}>
+              Return to shop
+            </Button>
+          </Modal.Footer>
+        </>          
+        )
+      }
       </Modal>
     </>
   )
