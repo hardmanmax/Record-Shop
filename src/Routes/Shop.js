@@ -1,6 +1,8 @@
+import CategoriesPreview from "../Routes/CategoriesPreview";
+
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <CategoriesPreview />
   )
 }
 
