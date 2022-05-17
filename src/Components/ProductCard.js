@@ -1,8 +1,17 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Image from "react-bootstrap/Image";
+import { useContext } from 'react';
+import { BasketContext } from '../Context/basket.context';
+
 
 const ProductCard = ({ product }) => {
+  
+  const { addItemToBasket } = useContext(BasketContext);
+  //Allows us to add specific item to basket, meaning we can display 
+  //  the exact item in the basket with its props.
+  const addProductToBasket = () => addItemToBasket(product);
+
   const { name, artist, imgsrc, price } = product;
 
   return (
@@ -22,6 +31,7 @@ const ProductCard = ({ product }) => {
       <Card.Text>£{price}</Card.Text>
       <Button 
         variant="dark"
+        onClick={addProductToBasket}
         >Add to basket</Button>
     </Card.Body>
   </Card>

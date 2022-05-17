@@ -11,6 +11,7 @@ import { signOutUser } from "../Utilities/firebase";
 
 import SignInModal from '../Components/Modals/SignInModal';
 import SignUpModal from '../Components/Modals/SignUpModal';
+import BasketModal from '../Components/Modals/BasketModal';
 
 
 const Navigation = () => {
@@ -65,7 +66,9 @@ const Navigation = () => {
             </>
 
 
-            <Nav>Basket (0)</Nav>
+            <Nav>
+              <BasketModal />
+            </Nav>
             
           </Navbar.Collapse>
         </Container>
