@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import { 
+  //Authentication functions
   getAuth, 
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -11,12 +12,17 @@ import {
   onAuthStateChanged
  } from 'firebase/auth';
 
-import { 
+import {
+  //General setup functions
   getFirestore, 
   doc, 
   getDoc, 
   setDoc,
-  
+  //Collection setup functions
+  collection,
+  writeBatch,
+  query,
+  getDocs
 } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
@@ -97,3 +103,33 @@ export const signOutUser = async () => {
 
 export const authStateChangedListener = (callback) => 
   onAuthStateChanged(auth, callback);
+
+//COLLECTION FUNCTIONS
+
+//Store collection data in db
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+  await batch.commit();
+  console.log('done');
+}
+
+//Return collection data from db
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, 'categories');
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
+}

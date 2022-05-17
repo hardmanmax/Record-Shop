@@ -1,8 +1,7 @@
-import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 
 const DirectoryItem = ({ category }) => {
-  const { imgsrc, title, route } = category;
+  const { imgsrc, title } = category;
 
   return (
     <Card
@@ -11,11 +10,9 @@ const DirectoryItem = ({ category }) => {
       md={1} 
       >
       <Card.Img style={{minHeight: "78%"}} src={imgsrc}></Card.Img>
-      <Card.Footer  style={{minHeight: "22%"}}>
-        <Button variant="light" >
+      <Card.Footer style={{minHeight: "22%", textAlign: "center"}}>
           <Card.Title>{title}</Card.Title>
           <Card.Text>Shop Now</Card.Text>
-        </Button>
         </Card.Footer>
     </Card>
 
