@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
+
 const addBasketItem = (basketItems, productToAdd) => {
+  
   const existingBasketItem = basketItems.find(
     (basketItem) => basketItem.id === productToAdd.id);
   
@@ -11,7 +13,7 @@ const addBasketItem = (basketItems, productToAdd) => {
       : basketItem
       )
     }
-  return [...basketItems, {productToAdd, quantity: 1}];
+  return [...basketItems, {...productToAdd, quantity: 1}];
 }
 
 //FUNCTIONS TO EXPORT
