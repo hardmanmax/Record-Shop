@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const BasketModal = () => {
 
-  const { basketCount, basketItems } = useContext(BasketContext);
+  const { basketCount, basketItems, basketTotal } = useContext(BasketContext);
 
   const [show, setShow] = useState(false);
 
@@ -61,7 +61,7 @@ const BasketModal = () => {
               <Col></Col>
               <Col></Col>
               <Col>
-                <h4>Total: £</h4>
+                <h4>Total: £{basketTotal}</h4>
               </Col>
             </Row>
           </Modal.Body>
