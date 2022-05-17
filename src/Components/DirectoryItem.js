@@ -1,10 +1,15 @@
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 
 const DirectoryItem = ({ category }) => {
-  const { imgsrc, title } = category;
+  const { imgsrc, title, route } = category;
+  const navigate = useNavigate();
+
+  const onNavigateHandler = () => navigate(route);
 
   return (
     <Card
+      onClick={onNavigateHandler}
       style={{paddingLeft: 0, paddingRight: 0, cursor: "pointer"}}
       className="m-1"
       md={1} 
