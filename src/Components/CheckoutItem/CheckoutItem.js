@@ -26,7 +26,7 @@ const CheckoutItem = ({basketItem}) => {
           style={{cursor: "pointer"}}
           onClick={subtractItemHandler} 
         />
-        <a style={{padding: "0 10px"}}>{` ${quantity} `}</a>
+        <p style={{padding: "0 10px"}}>{` ${quantity} `}</p>
         <FontAwesomeIcon 
           icon={faPlus} 
           style={{cursor: "pointer"}}
