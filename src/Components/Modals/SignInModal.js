@@ -48,8 +48,6 @@ const SignInModal = () => {
       await signInAuthUserWithEmailAndPassword(email, password);
       handleClose();
       setFormFields(defaultFormFields);
-      
-
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
@@ -57,7 +55,7 @@ const SignInModal = () => {
           setFormFields(defaultFormFields);
         break;
         case "auth/user-not-found":
-          alert('No account exists for those details. Sign up');
+          alert('No account exists for those details. Sign up to continue.');
           setFormFields(defaultFormFields);
           handleClose();
         break;

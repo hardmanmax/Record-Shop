@@ -22,7 +22,7 @@ const subtractBasketItem = (basketItems, basketItemToSubtract) => {
   const existingBasketItem = basketItems.find((basketItem) => 
   basketItem.id === basketItemToSubtract.id);
 
-  if(existingBasketItem.quantity == 1) {
+  if(existingBasketItem.quantity === 1) {
     return basketItems.filter(basketItem => basketItem.id !== basketItemToSubtract.id);
   }
   return basketItems.map((basketItem) => 

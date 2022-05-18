@@ -3,7 +3,6 @@ import { getCategoriesAndDocuments } from "../Utilities/firebase"
 // import { addCollectionAndDocuments } from "../Utilities/firebase";
 // import SHOP_DATA from '../shop-data';
 
-
 export const CategoriesContext = createContext({
   categoriesMap: {},
 });
@@ -11,7 +10,7 @@ export const CategoriesContext = createContext({
 export const CategoriesProvider = ({children}) => {
   const [categoriesMap, setCategoriesMap] = useState({});
   
-  //This only needs to be done once to initialise the db.
+  // This only needs to be done once to initialise the db.
   // useEffect(() => {
   //   addCollectionAndDocuments('categories', SHOP_DATA);
   // }, [])
