@@ -16,7 +16,7 @@ const CheckoutItem = ({basketItem}) => {
   return (
     <Row key={id} className="my-3">
       <Col className="text-center">
-        <Image src={imgsrc} style={{maxWidth:"80px"}}/>
+        <Image src={imgsrc} style={{maxWidth:"80px"}} rounded/>
       </Col>
       <Col className="text">{name}</Col>
 
@@ -26,7 +26,7 @@ const CheckoutItem = ({basketItem}) => {
           style={{cursor: "pointer"}}
           onClick={subtractItemHandler} 
         />
-        <p style={{padding: "0 10px"}}>{` ${quantity} `}</p>
+        <span style={{padding: "0 10px"}}>{` ${quantity} `}</span>
         <FontAwesomeIcon 
           icon={faPlus} 
           style={{cursor: "pointer"}}

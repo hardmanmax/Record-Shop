@@ -46,8 +46,8 @@ const BasketModal = () => {
             <Row>
               <Col></Col>
               <Col>Title</Col>
-              <Col>Quantity</Col>
-              <Col>Price</Col>
+              <Col className="text-center">Quantity</Col>
+              <Col className="text-center">Price</Col>
             </Row>
 
             {basketItems.map((item) => (

@@ -11,8 +11,7 @@ const DirectoryItem = ({ category }) => {
     <Card
       onClick={onNavigateHandler}
       style={{paddingLeft: 0, paddingRight: 0, cursor: "pointer"}}
-      className="m-1"
-      md={1} 
+      className="m-1 shadow"
       >
       <Card.Img style={{minHeight: "78%"}} src={imgsrc}></Card.Img>
       <Card.Footer style={{minHeight: "22%", textAlign: "center"}}>

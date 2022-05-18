@@ -1,4 +1,4 @@
-import ProductCard from "./ProductCard";
+import ProductCard from "./ProductCard/ProductCard"
 import {Container, Row, Button} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 

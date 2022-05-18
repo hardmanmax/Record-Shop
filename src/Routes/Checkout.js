@@ -61,8 +61,9 @@ const Checkout = () => {
             </Row>
           </Container>
         ) : (
-          <Container className="align-items-center">
-            <Col >
+
+          <Container>
+            <Col>
               <h2>Your basket is empty</h2>
               <Button variant="dark" onClick={goToShopHandler}>Return to shop</Button>
             </Col>

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 
-import ProductCard from '../Components/ProductCard';
+import ProductCard from '../Components/ProductCard/ProductCard';
 import { CategoriesContext } from '../Context/categories.context';
 import { Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';

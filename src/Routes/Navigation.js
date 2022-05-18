@@ -20,7 +20,17 @@ const Navigation = () => {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar
+        style={{
+          backgroundColor: "white", 
+          color: "black",
+          opacity: 0.92,
+          zIndex: 1
+        }} 
+        collapseOnSelect 
+        expand="lg" 
+        sticky="top"
+        >
         <Container>
           <Link to='/'>
             <Navbar.Brand>

@@ -6,7 +6,7 @@ const style = {
 
 const Footer = () => {
   return (
-      <Container className='my-5 text-center' style={{position: "relative", bottom: '0px'}}>
+      <Container className='mt-auto pt-5 my-5 text-center' style={{position: "relative", bottom: '0px'}}>
         <a 
           style={style}          
           href="http://www.maxhardman.co.uk"
