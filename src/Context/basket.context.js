@@ -16,6 +16,27 @@ const addBasketItem = (basketItems, productToAdd) => {
   return [...basketItems, {...productToAdd, quantity: 1}];
 }
 
+//SUBTRACT ITEM FROM BASKET
+const subtractBasketItem = (basketItems, basketItemToSubtract) => {
+
+  const existingBasketItem = basketItems.find((basketItem) => 
+  basketItem.id === basketItemToSubtract.id);
+
+  if(existingBasketItem.quantity == 1) {
+    return basketItems.filter(basketItem => basketItem.id !== basketItemToSubtract.id);
+  }
+  return basketItems.map((basketItem) => 
+    basketItem.id === basketItemToSubtract.id ?
+      {...basketItem, quantity: basketItem.quantity - 1}
+      : basketItem
+  )
+}
+
+//REMOVE ITEM FROM BASKET
+const removeBasketItem = (basketItems, basketItemToRemove) => {
+  return basketItems.filter(basketItem => basketItem.id !== basketItemToRemove.id);
+}
+
 //FUNCTIONS TO EXPORT
 
 export const BasketContext = createContext({
@@ -23,6 +44,8 @@ export const BasketContext = createContext({
   addItemToBasket: () => {},
   basketCount: 0,
   basketTotal: 0,
+  subtractItemFromBasket: () => {},
+  removeItemFromBasket: () => {}
 });
 
 export const BasketProvider = ({ children }) => {
@@ -46,12 +69,22 @@ export const BasketProvider = ({ children }) => {
   const addItemToBasket = (productToAdd) => {
     setBasketItems(addBasketItem(basketItems, productToAdd))
   }
+
+  const subtractItemFromBasket = (basketItemToSubtract) => {
+    setBasketItems(subtractBasketItem(basketItems, basketItemToSubtract))
+  }
+
+  const removeItemFromBasket = (basketItemToRemove) => {
+    setBasketItems(removeBasketItem(basketItems, basketItemToRemove))
+  }
   
   const value = {
     addItemToBasket,
     basketItems,
     basketCount,
-    basketTotal
+    basketTotal,
+    subtractItemFromBasket,
+    removeItemFromBasket
   }
 
   return <BasketContext.Provider value={value}>
