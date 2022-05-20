@@ -1,19 +1,10 @@
-import { Container } from 'react-bootstrap'
-
-const style = {
-  textDecoration: "none", color: "black"
-};
+import React from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
 
 const Footer = () => {
   return (
-      <Container className='mt-auto pt-5 my-5 text-center' style={{position: "relative", bottom: '0px'}}>
-        <a 
-          style={style}          
-          href="http://www.maxhardman.co.uk"
-          target="_blank"
-          rel="noreferrer"
-        >maxhardman.co.uk</a>
-      </Container>   
+    <Navbar className="my-2"> </Navbar>
+
   )
 }
 

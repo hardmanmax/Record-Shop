@@ -5,6 +5,7 @@ import CheckoutItem from "../Components/CheckoutItem/CheckoutItem";
 import SignInModal from "../Components/Modals/SignInModal";
 import { UserContext } from "../Context/user.context";
 import { useNavigate } from "react-router-dom";
+import PaymentModal from "../Components/Modals/PaymentModal";
 
 const Checkout = () => {
   const { basketItems, basketTotal } = useContext(BasketContext);
@@ -45,24 +46,24 @@ const Checkout = () => {
               <Col className="text-center">
                 <h3>Total: £{basketTotal}</h3>
                 <>
-                  <Button className="text-center"  variant="dark">
                     {
                       currentUser ? (
-                        <span>Proceed to payment</span>
+                        <PaymentModal />
                       ) : (
                       <>
+                        <Button variant="dark">
                           <SignInModal/>
+                        </Button>
                       </>
                         )
                     }
-                  </Button>
                 </>
               </Col>
             </Row>
           </Container>
         ) : (
 
-          <Container>
+          <Container className="my-5 text-center">
             <Col>
               <h2>Your basket is empty</h2>
               <Button variant="dark" onClick={goToShopHandler}>Return to shop</Button>

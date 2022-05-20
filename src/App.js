@@ -6,6 +6,7 @@ import Navigation from './Routes/Navigation';
 import Shop from './Routes/Shop';
 import Footer from './Routes/Footer';
 import Checkout from './Routes/Checkout';
+import Confirmation from './Routes/Confirmation';
 
 const App = () => {
   return (
@@ -16,8 +17,10 @@ const App = () => {
           <Route path='/shop/*' element={<Shop/>}/>
           <Route path='/checkout'element={<Checkout />}/>
         </Route>
+        <Route path='/confirmation' element={<Confirmation/>}/>
       </Routes>
       <Footer />
+
     </>
   );
 }

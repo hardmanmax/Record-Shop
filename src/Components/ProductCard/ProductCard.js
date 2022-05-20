@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Card 
-      className="m-2 shadow" 
+      className="m-2 shadow text-center" 
       style={{ 
         width: '18rem', 
         margin: 'auto',

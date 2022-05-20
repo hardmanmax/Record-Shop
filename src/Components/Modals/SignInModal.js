@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form";
-import Nav from 'react-bootstrap/Nav';
+import { Nav } from "react-bootstrap";
 
 import { useState, useContext } from "react";
 
@@ -42,7 +42,7 @@ const SignInModal = () => {
     e.preventDefault();
     
     if (!email || !password ) {
-      alert('Please enter and password to sign in.')
+      alert('Please enter email and password to sign in.')
     }
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
@@ -65,7 +65,7 @@ const SignInModal = () => {
   }
   return (
     <>
-      <Nav onClick={handleShow}>
+      <Nav variant="dark" onClick={handleShow}>
       {
         currentUser ? 
         <p>{`${currentUser.email}`}</p>
