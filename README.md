@@ -1,3 +1,14 @@
+# Developer's Notes:
+
+## What I learnt:
+I found this project extremely challenging. I learnt a great deal about context API, and general state management principles, and how to use these to update the UI. I also used React-Bootstrap for the first time, which saved a lot of time on styling. 
+
+Much of the firebase.js file was taken from online video tutorials, as my skills with full-stack/backend are not as strong as with frontend. But in the process, I gained a much better grasp of user authentication, async operations, noSQL databases, and how all of these can interact with a react application’s context/state variables. 
+
+## What I’d change:
+If I could make any improvements, I would add a mock card-payment facility (eg Stripe) as this would make it a more saleable product. I’d also take a bit more time making it mobile-friendly: whilst Bootstrap helped with this, I imagine React Native (which I’ve yet to explore) would make it even better. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
