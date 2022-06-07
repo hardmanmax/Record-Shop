@@ -1,5 +1,7 @@
 # Developer's Notes:
 
+## A live version of this site can be found at https://gleeful-lollipop-faf051.netlify.app/
+
 ## What I learnt:
 I found this project extremely challenging. I learnt a great deal about context API, and general state management principles, and how to use these to update the UI. I also used React-Bootstrap for the first time, which saved a lot of time on styling. 
 
